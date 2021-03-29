@@ -18,3 +18,119 @@
     color: #fff;
     font-size: 40px;
 }
+
+/*? First Set Of Properties to be set on the `Container` */
+    /*! 1. display: flex; */
+        /* The first thing we have to do in order to use the flexbox is to set the display property to `flex` of the `container` class. */
+        .container {
+            display: flex; 
+            /* By adding this property - All the child elements inside the `container` class become flex items and are now displayed side by side. */
+        }
+    /* -------------------*/
+
+    /*! 2. flex-direction: ; */
+        .container {
+            flex-direction: row;
+            /* By adding this property - We can set the direction of the `Main Axis` */
+
+            /* Now we can imagine that this will be very handy for responsive designs for example on a smaller screen we can set the flex direction to column and then the elements 
+               will all be on top of one another. */
+        }
+    /* -----------------------------------------------------------*/
+
+    /*! 3. justify-content: ; */
+        .container {
+            justify-content: center;
+            /*  This property is used to control how the items should be positioned along the `main axis`
+                Arguments -
+                1. center - 
+                    By applying this all the items/entire-content are now in the center of the container
+                    It would be much harder to create this very simple layout with a float layout
+                    But It doesn't do anything to the space that's between the items, 
+                    Because the space that we have between them is defined by the `margin: 30px;` that we declared in the main `item` class.
+                2. space-between 
+                3. space-around
+                4. space-evenly
+                5. flex-end
+                6. flex-start  */              
+        }
+    /* -----------------------------------------------------------*/
+
+    /*! 4. align-items: ; */
+        .container {
+            align-items: center;
+            /*  This property is used to control how the items should be positioned along the `cross axis`
+                Now in order for this to work, we actually need one of the item to be bigger than all others, 
+                because right now, they are already perfectly aligned along the cross-axis. 
+                But if we make one of them bigger than the others, than we can experiment with different alignment along the cross axis.
+
+                For this to work we already added a class `i2` for the 2nd item.
+                And now we will work with that class.
+                First of all add some height lets say `height: 200px;` to the i2 class and keep `align-items` blank which is equals to its default value which is `stretch` 
+                As the moment we changed the height of item-2, all the items growed not just the i2 on which we defined the height.
+                1. stretch
+                And this is because the intial value on align items is stretch.   
+                It simply stretches all the other elements to match the height of the flex item
+                2. center
+                Now if we change the value of `align-items` to `center` we will see what is orientation along the cross axis means.
+                We will basically centered all the items in the vertical direction relative to the 2 item which is bigger, 
+                just by setting `align-items: center;` and making one element bigger than the others.
+                3. flex-start
+                And if we change the `align-items` to `flex-start` then all the items will get aligned nicely at the top.
+                4. flex-end
+                And if we change the `align-items` to `flex-end` then all the items will get aligned nicely to the end.
+
+                All of this happens along the cross-axis(up to down).
+
+                5. baseline
+                It basically align the text of the flex items along a line or you can say their common text, 
+                If you draw an imaginary line under the texts you will see that they are completely aligned.
+                And for this we have to increase the font size of item 4 with the help of class `i4`  to 70/90 pixels and change the `align-items` to `baseline`.
+                */  
+                            
+        }
+
+        .i2 {
+            height: 200px;
+        }
+
+        .i4 {
+            font-size: 70px;
+        }
+    /* --------------------------------------------------------*/
+
+
+    /*! 5. flex-wrap: ;*/
+    /*! 6. align-content: ; */
+    /* We will dicuss these property in a Future Lecture */
+
+    /*! What happens with the `justify-content`, and `align-items` when we change the flex direction to `column`*/
+        .container {
+            flex-direction: column;
+            /*  After doing this the main direction is no longer going from the left to the right, but from the top to the bottom.
+                But the item are now horizontally centered, Why?
+                Because the `align-items` property are set to center.
+                Basically the horizontal centering is now in the cross direction 
+                And remember that `align-items` is the property that controls the positioning along the cross axis. 
+               
+                Now let's set `align-items` to `flex-start`. */
+                align-items: flex-start;
+                /* Now it's at the beginning of the cross axis which now goes now goes from left to right. 
+                   Now if we set it to `flex-end` then all of these move to the right side. 
+               
+                    That's why it's really important to keep track of where the main and the cross axis are situated 
+                    in order to use the justify content and align items properties in the correct way 
+                
+                    And now, just to see how the `justify-content` works in this situation let's just increase the height of this container 
+                    to 1500 pixels */
+                    height: 1500px;
+                    /*  And so you see that the items are now basically centered in the container,
+                        So, the space at the bottom of items is as same as the space at the top.
+                        Once again, why is that?
+                        
+                        It's because `justify-content` is set to center. So, along the main axis these items are now 
+                        centered and this axis is now going from top to the bottom. */
+            
+        }
+/*? ----------------------END--------------------------- */
+
