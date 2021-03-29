@@ -134,3 +134,142 @@
         }
 /*? ----------------------END--------------------------- */
 
+
+/*? Second Set Of Properties to be set on the `Container's Items` */
+    /*! First we have to Set container's basic properties for this Section  */
+    .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 500px;
+    }
+
+/*! 1. align-self:  */
+    /*  Basically this property overrides the `align-contents` property for one individual item. */
+    .i4 {
+        align-self: flex-end;
+        /*  Right now, the `align-items` is set to `center` so all the items are now centered along the cross axis which is from top to bottom. 
+            But if we wanna override that for one individual item, we can use `align-self` and set it to `flex-end` or `flex-start`.
+            Now we can see in preview that all the flex items except the 4th one are aligned to the center and 
+            the 4th one is at the bottom of container.
+            Using `align-self: strectch;` is very useful,
+            Because now this item-4 is actually stretched to its maximum in order to fill the entire container.
+            
+            And again put it back to the `flex-end` */
+    }
+/* ---------------- */
+
+/*! 2. order:  */
+    /*  Initial value of order is zero. 
+        So if we wanna put one of the 5 elements at the beginning all we need to do is to put the value which is lower than zero for the order 
+        So, "order: -1"*/
+        .i4 {
+            order: -1;
+        }
+        /*  Now this item will go to the Start 
+            Why's that? 
+            Becuase Flexbox orders all of these elements according to their order number, ordering from the lowest order number. 
+            If we set order for item-3 to 1 */
+            .i3 {
+                order: 1;
+            }
+            /*  Then this item-3 moves to the end of the container or you can say right side.
+                And that's actually pretty useful, for responsive design in order to change position 
+                for some elements on a smaller or on a bigger screen */
+/* ----------- */
+
+/*! 3. flex-grow: ;  */
+    /*  It is the ability of an element to grow And what we do is to specify an integer, a number like we did in the `order`.
+        First we want to do is to set flex on all the items. */
+        .item {
+            flex-grow: 1;
+        }
+        /*  So all of the `item` are now occupy the entire space that they can, in other words, they growed as much as they can. */
+
+        /*  We can see it even better if we remove margin of the item to `margin: 0px;` */
+        .item {
+            margin: 0px;
+        }
+        /*  So now they're actually touching one another.
+            If we set all of the item to a higher number like 2 or 3 or even 23, it doesn't really matter, because this number only matters
+            in relation to other numbers. 
+            An example of that is 
+            To set flex-grow to 1 and put some margin back on item */
+            .item {
+                flex-grow: 1;
+                margin: 40px;
+            }
+            /*  But this time set `flex-grow: 2;` for the item 2 */
+                .i2 {
+                    flex-grow: 2;
+                }
+                /*  Item 2 is now double the size of the other ones, That's because 2 is double of 1,
+                    So this one has twice the ability to grow than all the other flex items. */
+/* ----------------- */
+
+/*! 4. flex: ;  */
+
+    /*  This is a shorthand property which stands for `flex-grow`, `flex-shrink`, and `flex-basis` 
+        So saying flex-grow is actually the same thing as saying `flex: 1` */
+
+    /*  So, a simple trick to expand a flex item to occupy as much width as it can is simply setting its flex property to 1 */
+
+    /*  So let see what's happens if we just set `flex: 1;` on one of the item, Let's say on the item 3 
+        and get rid of all other `flex-grow: ;` or comment out all the places where we declare `flex-grow: ;` above this line  */
+        .i3 {
+            flex: 1;
+        }
+        /*  So now this item occupies all the space that it can and then the remaining flex items just occupy the rest of the space */
+
+/* ----------------- */
+
+/*! 5. flex-basis: ;  */
+    /*  With this one we can set the width of a flex item, Instead of using the width property on a flex item we usually use flex-basis. */
+        .i2 {
+            flex-basis: 20%;
+        }
+        /*  It is now occupying 20% of the container's width then these elements which basically have their flex-basis set to auto,
+            which is the initial value for flex-basis.
+            These elements occupy the space that they need, and then all the remaining space is occupied by the last element, item-3
+            because its flex set to 1. */
+/* ------------------ */
+
+/*! 6. flex-shrink: ;  */
+    /*  For this property let's actually change the `flex-basis: ;` of the item-2 to a pixle based value, let's say 300 pixels */
+        .i2 {
+            flex-basis: 300px;
+        }
+        /*  When we decreases the viewport width, `item-3` grows smaller and smaller because it has less and less space which it can occupy.
+            as we further decreases the viewport width then the `item-2` also starts to decrease.
+            So even if we set its flex-basis to 300 pixels, it still starts decreasing when there's no more available space. 
+            
+            But sometimes that's not exactly what we want, So we can actually change that using the `flex-shrink` property 
+            
+            Because `flex-shrink` controls how an element can shrink, It has the initial value of 1, 
+            1 means that the element is basically allowed to shrink. 
+            And that's why we see this behavior here, Where the element starts getting smaller and smaller as there is no more available space. 
+            
+            Now if we don't want this to happen, we simply set it to zero and with that the element is no longer allowed to shrink.
+            Other elements simply get clipped basically from the viewport */
+            .i2 {
+                flex-shrink: 0;
+            }
+
+/* ------------------- */
+
+/*! 4.1 (ref. to 4 property of this Second set of properties) */
+/*! short hand property - `flex: ;`  */
+    /*  Instead of having `flex-grow: ;`, `flex-basis: ;` and `flex-shrink: ;` we just use the shorthand because that's the best practice. */
+            .i2 {
+                flex: 0 0 300px;
+            }
+            /*  First is for flex-grow, Second is for flex-shrink and Third is for flex-basis.
+                So that's exactly the thing that we had before without shorthand. */
+
+            /*  But what we usually want is to let the item to be able to shrink. Because we don't want that situation 
+                where the elements no longer fit the container. */
+            .i2 {
+                flex: 0 1 300px;
+            }
+/*? ----------------------------END------------------------------ */
+
