@@ -273,3 +273,44 @@
             }
 /*? ----------------------------END------------------------------ */
 
+
+/*?  Adding More Flex Items */
+
+/*! 1. What happens if we add another five elements in out HTML code? */
+
+    /*  <div class="item">6</div> 
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+
+        You will see that all of these flex items, will start getting cramped into the flex-container.
+        And if we decrease the viewport height even more then at some point they even start overflowing the flex-container.
+        But as we know, there's another property that we can use on the flex container which is - `flex-wrap` and it's initial value is `no-wrap` and that's because it's not wrapping into a new line. */
+
+        .container {
+            flex-wrap: wrap;
+        }
+        /*  If we set it to `wrap`, then it will create a new line for the flex items that no longer fit the container.
+            And if we actually decreases the view port even more then you'll see that more and more elements will come down to the second row or the second line that is created by this property as the flex items start to wrap.
+            This can be pretty useful for responsive design when we get less and less space to work with in our layouts. */
+
+/*! ----------------------------------------------------------------- */
+
+/*! 2. align-content: ; */
+
+    /*  We have to set these 2 things before discussing `align-content` property. */
+    .container {
+        height: 1000px;
+    }
+    .i4 {
+        align-self: auto;
+    }
+
+    /* `align-content` property aligns the rows along the cross axis 
+        It's pretty similar to align-items with the difference that align-items aligns the flex items but the align-content aligns entire rows, along the cross-axis.*/
+    .container {
+        align-content: flex-start;
+    }
+
+    
